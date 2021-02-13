@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Form</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="forms">
+        <h1>Build your pipeline</h1>
+        <form name="myform" id="forms" method="post">
+          <label for="cars">Select Your storage:</label>
+          <select name="cars" id="cars">
+            <option value="volvo">Google cloud storage</option>
+            <option value="saab">Amazon web services</option>
+          </select>
+          <br />
+          <label for="pipelinename">pipeline Name:</label>
+          <input
+            type="text"
+            placeholder="e.g., cust_shop_gateway001"
+            name="pipelinename"
+            pattern="^[a-zA-Z0-9].[a-zA-Z0-9_-]*.{3,}$"
+            title="Minimum length 5. No special characters. Cannot start with '_', '-','+'"
+          /><br />
+
+          <label for="projectname">GCS project name:</label>
+          <input
+            type="text"
+            name="projectname"
+            placeholder="project-id"
+            pattern="^[a-zA-Z0-9].[a-zA-Z0-9_-]*.{3,}$"
+            title="Minimum length 5. No special characters. Cannot start with '_', '-','+'"
+          /><br />
+
+          <label for="bucketname">Bucket Name</label>
+          <input
+            type="text"
+            name="bucketname"
+            placeholder="gs://your-bucket"
+            pattern="^[a-zA-Z0-9].[a-zA-Z0-9_-]*.{3,}$"
+            title="Minimum length 5. No special characters. Cannot start with '_', '-','+'"
+          /><br />
+
+          <label for="filename">Input cloud storge file(s):</label>
+          <input
+            type="text"
+            name="filename"
+            placeholder="GCS location of your files"
+            pattern="^[a-zA-Z0-9].[a-zA-Z0-9_-]*.{3,}$"
+            title="Minimum length 5. No special characters. Cannot start with '_', '-','+'"
+          /><br />
+
+          <label for="pwd">GCS credentials:</label>
+          <input type="password" name="pwd" /><br />
+
+          <label for="run">Run Every:</label>
+          <input type="text" name="run" placeholder="(in minutes)" pattern="[0-9]+" title="Enter only numbers " /><br />
+
+          <input type="submit" onclick="myFunction()" value="Submit" />
+        </form>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    function validateform() {
+      var name = document.myform.pipelinename.value;
+      var proname = document.myform.projectname.value;
+      var buckname = document.myform.bucketname.value;
+      var filname = document.myform.filename.value;
+      var pwdname = document.myform.pwd.value;
+      var runname = document.myform.run.value;
+
+      if (
+        name == null ||
+        name == '' ||
+        proname == null ||
+        proname == '' ||
+        buckname == null ||
+        buckname == '' ||
+        filname == null ||
+        filname == '' ||
+        pwdname == null ||
+        pwdname == '' ||
+        runname == null ||
+        runname == ''
+      ) {
+        alert('All the fields are required');
+        return false;
+      } else if (pwdname.length < 5) {
+        alert('Password must be at least 5 characters long.');
+        return false;
+      }
+    }
+  </script>
+
+  <script>
+    function myFunction() {
+      if (validateform()) document.getElementById('forms').reset();
+    }
+  </script>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="styles.css" rel="stylesheet" />
+    <title>JSON DATA</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <table id="table">
+      <!-- HEADING FORMATION -->
+      <tr>
+        <th>Machine name</th>
+        <th>Machine ID</th>
+        <th colspan="3">Energy Consumed</th>
+        <th>Current</th>
+        <th>Voltage</th>
+        <th>Power factor</th>
+        <th>Active Power</th>
+        <th>Reactive Power</th>
+        <th colspan="3">IDLE time</th>
+      </tr>
+
+      <tr>
+        <th></th>
+        <th></th>
+        <th>Today</th>
+        <th>MTD</th>
+        <th>YTD</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Today</th>
+        <th>MTD</th>
+        <th>YTD</th>
+      </tr>
+
+      <script>
+        $(document).ready(function () {
+          // FETCHING DATA FROM JSON FILE
+          $.getJSON('data.json', function (data) {
+            var student = '';
+
+            // ITERATING THROUGH OBJECTS
+            $.each(data, function (key, value) {
+              //CONSTRUCTION OF ROWS HAVING
+              // DATA FROM JSON OBJECT
+              student += '<tr>';
+              student += '<td>' + value.machine_name + '</td>';
+
+              student += '<td>' + value.machine_id + '</td>';
+
+              student += '<td>' + value.D_energy + '</td>';
+
+              student += '<td>' + value.M_energy + '</td>';
+
+              student += '<td>' + value.Y_energy + '</td>';
+
+              student += '<td>' + value.current + '</td>';
+
+              student += '<td>' + value.voltage + '</td>';
+
+              student += '<td>' + value.power_factor + '</td>';
+
+              student += '<td>' + value.active + '</td>';
+
+              student += '<td>' + value.reactive + '</td>';
+
+              student += '<td>' + value.D_idle + '</td>';
+              student += '<td>' + value.M_idle + '</td>';
+              student += '<td>' + value.Y_idle + '</td>';
+
+              student += '</tr>';
+            });
+
+            //INSERTING ROWS INTO TABLE
+            $('#table').append(student);
+          });
+        });
+      </script>
+    </table>
+  </body>
+</html>

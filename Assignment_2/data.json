@@ -1,0 +1,33 @@
+[
+  {
+    "machine_name": "auto widing machine",
+    "machine_id": "machine001",
+    "current": 0,
+    "voltage": 0,
+    "power_factor": 0,
+    "active": 0.0,
+    "reactive": 0.0,
+    "D_energy": 0.0,
+    "M_energy": 0,
+    "Y_energy": 0,
+    "D_idle": 1,
+    "M_idle": 1,
+    "Y_idle": 1
+  },
+
+  {
+    "machine_name": "Boiler machine",
+    "machine_id": "machine004",
+    "current": 0,
+    "voltage": 0,
+    "power_factor": 0,
+    "active": 0.0,
+    "reactive": 0.0,
+    "D_energy": 0.0,
+    "M_energy": 0,
+    "Y_energy": 0,
+    "D_idle": 0,
+    "M_idle": 0,
+    "Y_idle": 0
+  }
+]
